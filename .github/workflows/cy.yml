@@ -28,8 +28,6 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
           pip install robotframework-browser
-          pip install playwright
-          playwright install
 
       # Executa os testes do Robot Framework
       - name: Executar testes
