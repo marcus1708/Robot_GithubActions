@@ -19,7 +19,7 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.14
+          python-version: 3.14.0-beta.1
 
       # Instala as dependências
       - name: Instalar dependências
