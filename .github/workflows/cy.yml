@@ -1,4 +1,4 @@
-name: Robot Framework Automation
+name: Robot Framework Github Actions
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  robot-tests:
+  Robot:
     runs-on: ubuntu-latest
 
     steps:
@@ -39,3 +39,9 @@ jobs:
       - name: Executar testes com Xvfb (usando Firefox)
         run: |
           xvfb-run --server-args="-screen 0 1920x1080x24" robot -d ./results Robot/Teste/Autom.robot
+          
+      - name: Publicar relatórios do Robot Framework
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-framework-report
+          path: results/
