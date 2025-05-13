@@ -3,8 +3,8 @@ Library    SeleniumLibrary
 
 *** Variables ***
 
-${url}    file:/home/marcus/Área de trabalho/Automação/Projetos/Robot_GithubActions/src/index.html
-
+#${url}    file:/home/marcus/Área de trabalho/Automação/Projetos/Robot_GithubActions/src/index.html
+ ${url}    http://localhost:8000/index.html
 *** Keywords ***
 
 Abrir o Navegador
