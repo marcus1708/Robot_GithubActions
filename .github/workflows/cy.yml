@@ -17,22 +17,7 @@ jobs:
       - name: Instalar dependências do sistema
         run: |
           sudo apt update
-          sudo apt install -y wget unzip xvfb libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 curl jq
-
-      - name: Instalar Google Chrome
-        run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get install -f -y
-
-      - name: Baixar e instalar ChromeDriver compatível
-        run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-          DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-          echo "Usando ChromeDriver v$DRIVER_VERSION"
-          wget https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+          sudo apt install -y xvfb
 
       - name: Configurar Python
         uses: actions/setup-python@v4
@@ -45,7 +30,7 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
 
-      - name: Executar testes com Xvfb
+      - name: Executar testes com Xvfb (usando Firefox)
         run: |
           Xvfb :99 -screen 0 1920x1080x24 &
           export DISPLAY=:99
