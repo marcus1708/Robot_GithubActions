@@ -8,7 +8,7 @@ ${url}    file:/home/marcus/Área de trabalho/Automação/Projetos/Robot_GithubA
 *** Keywords ***
 
 Abrir o Navegador
-    Open Browser    ${url}    browser=chrome 
+    Open Browser    ${url}
 Fechar o Navegador
     Close Browser  
 Preenche os campos
