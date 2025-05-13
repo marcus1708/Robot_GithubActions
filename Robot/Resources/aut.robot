@@ -4,7 +4,7 @@ Library    SeleniumLibrary
 *** Variables ***
 
 ${url}    http://localhost:8000/index.html
-${file}   https://github.com/marcus1708/Robot_GithubActions/blob/main/Robot/modelo.txt
+
 *** Keywords ***
 
 Abrir o Navegador
@@ -67,7 +67,7 @@ Preenche os campos obrigatórios - Telefone
     Input Text    id=text-area    Teste campos obrigatórios
     Click Button    Enviar
 Anexar arquivo
-    Choose File    id=file-upload    ${file}
+    Choose File    id=file-upload    ${CURDIR}/files/modelo.txt
 Preenche os campos e clica em Enviar
     Go To         ${url}
     Input Text    id=Name    Fulano
