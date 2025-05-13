@@ -17,12 +17,12 @@ jobs:
       - name: Instalar dependências do sistema
         run: |
           sudo apt update
-          sudo apt install -y wget unzip xvfb curl libxi6 libgconf-2-4 libnss3 libxss1 libappindicator1 libindicator7 fonts-liberation libasound2 libatk-bridge2.0-0 libgtk-3-0
+          sudo apt install -y wget unzip xvfb libnss3 libxss1 libatk-bridge2.0-0 libgtk-3-0 curl
 
       - name: Instalar Google Chrome
         run: |
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
+          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get install -f -y
 
       - name: Instalar ChromeDriver
         run: |
