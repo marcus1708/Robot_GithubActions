@@ -4,7 +4,7 @@ Library    SeleniumLibrary
 *** Variables ***
 
 ${url}    http://localhost:8000/index.html
-${file}   /home/marcus/Área de trabalho/Automação/RobotFramework/Robot_GithubActions/Robot/modelo.txt
+${file}   https://github.com/marcus1708/Robot_GithubActions/blob/main/Robot/modelo.txt
 *** Keywords ***
 
 Abrir o Navegador
