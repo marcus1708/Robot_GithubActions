@@ -30,8 +30,7 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
 
-      - name: Executar testes com Xvfb (usando Firefox)
+      # Executa os testes do Robot Framework
+      - name: Executar testes
         run: |
-          Xvfb :99 -screen 0 1920x1080x24 &
-          export DISPLAY=:99
           robot -d ./results Robot/Teste/Autom.robot
