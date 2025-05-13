@@ -11,44 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Faz o checkout do código
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # Instala o Google Chrome
-      - name: Instalar Google Chrome
+      - name: Instalar dependências do sistema
         run: |
           sudo apt update
-          sudo apt install -y wget curl unzip xvfb
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install -y ./google-chrome-stable_current_amd64.deb
-
-      # Instala o ChromeDriver
-      - name: Instalar ChromeDriver
-        run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
-          CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-          wget -N https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          chmod +x /usr/local/bin/chromedriver
-
-      # Configura o Python
-      - name: Configurar Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11' # 3.14 ainda está em beta e pode causar erros com dependências
-
-      # Instala as dependências
-      - name: Instalar dependências
-        run: |
-          python -m pip install --upgrade pip
-          pip install robotframework
-          pip install robotframework-seleniumlibrary
-
-      # Executa os testes com Xvfb para ambiente gráfico virtual
-      - name: Executar testes
-        run: |
-          Xvfb :99 -screen 0 1920x1080x24 &
-          export DISPLAY=:99
-          robot -d ./results Robot/Teste/Autom.robot
+          sudo apt install -y wget unzip xvfb curl libxi6 libg
